@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        String dirPath = "./src";
+        String dirPath = ".";
         String fileName = args[0];
         File file = new File(dirPath + File.separator + fileName);
         String line = "";
@@ -23,7 +23,7 @@ public class Main {
         int count = 0;
 
         if (!file.exists()) {
-            System.out.println("file does not exist, input correct filename");
+            System.out.println("file does not exist, input correct dir/filename");
         }
 
         BufferedReader br = new BufferedReader(new FileReader(file));
