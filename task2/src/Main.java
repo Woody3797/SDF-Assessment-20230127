@@ -3,9 +3,9 @@ package src;
 import java.io.Console;
 
 public class Main {
-    
+
     public static void main(String[] args) {
-        
+
         double last = 0;
         String input = "";
         double result = 0;
@@ -17,51 +17,57 @@ public class Main {
         System.out.println("Welcome.");
 
         while (!input.contains("exit")) {
-            input = cons.readLine("> ");
+            try {
+                input = cons.readLine("> ");
 
-            if (input.contains("exit")) {
-                System.out.print("Bye bye");
-                System.exit(0);
-            }
+                if (input.contains("exit")) {
+                    System.out.print("Bye bye");
+                    System.exit(0);
+                }
 
-            String[] inputArr = input.trim().split(" ");
+                String[] inputArr = input.trim().split(" ");
 
-            if (inputArr[0].equals("$last")) {
-                num1 = last;
-            } else {
-                num1 = Double.parseDouble(inputArr[0]);
-            }
-            if (inputArr[2].equals("$last")) {
-                num2 = last;
-            } else {
-                num2 = Double.parseDouble(inputArr[2]);
-            }
-            String operator = inputArr[1];
+                if (inputArr[0].equals("$last")) {
+                    num1 = last;
+                } else {
+                    num1 = Double.parseDouble(inputArr[0]);
+                }
+                if (inputArr[2].equals("$last")) {
+                    num2 = last;
+                } else {
+                    num2 = Double.parseDouble(inputArr[2]);
+                }
+                String operator = inputArr[1];
 
-            switch (operator) {
-                case "+":
-                    result = num1 + num2;
-                    last = result;
+                switch (operator) {
+                    case "+":
+                        result = num1 + num2;
+                        last = result;
+                        break;
+                    case "-":
+                        result = num1 - num2;
+                        last = result;
+                        break;
+                    case "/":
+                        result = num1 / num2;
+                        last = result;
+                        break;
+                    case "*":
+                        result = num1 * num2;
+                        last = result;
+                        break;
+                    default:
+                        System.out.println("invalid input, try again");
+                        break;
+                }
+
+                if (result % 1 != 0) {
+                    System.out.printf("%.5f\n", result);
+                } else {
                     System.out.printf("%.0f\n", result);
-                    break;
-                case "-":
-                    result = num1 - num2;
-                    last = result;
-                    System.out.printf("%.0f\n", result);
-                    break;
-                case "/":
-                    result = num1 / num2;
-                    last = result;
-                    System.out.println(result);
-                    break;
-                case "*":
-                    result = num1 * num2;
-                    last = result;
-                    System.out.printf("%.0f\n", result);
-                    break;
-                default:
-                    System.out.println("invalid input, try again");
-                    break;
+                }
+            } catch (Exception e) {
+                continue;
             }
         }
     }
