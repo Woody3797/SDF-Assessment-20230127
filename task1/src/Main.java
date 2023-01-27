@@ -46,18 +46,19 @@ public class Main {
             }
         }
 
-
         while (count < 10) {
             int maxValue = Collections.max(wordCount.values());
             for (String key : wordCount.keySet()) {
                 if (wordCount.get(key) == maxValue) {
                     System.out.println(key + ": " + wordCount.get(key));
+                    count++;
+                    if (count >= 10) {
+                        System.exit(0);
+                    }
                     wordCount.remove(key);
                 }
             }
-            count++;
         }
-
         br.close();
     }
 }
