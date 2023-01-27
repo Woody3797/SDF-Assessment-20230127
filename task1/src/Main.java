@@ -50,8 +50,9 @@ public class Main {
             int maxValue = Collections.max(wordCount.values());
             for (String key : wordCount.keySet()) {
                 if (wordCount.get(key) == maxValue) {
-                    System.out.println(key + ": " + wordCount.get(key));
-                    count++;
+                    double freq = ((double) (wordCount.get(key) / (double) wordCount.size()));
+                    System.out.printf("word: %s, frequency: %.3f\n", key, freq);
+                    count++; // cuts out at 10 words, but can print more if this is removed
                     if (count >= 10) {
                         System.exit(0);
                     }
